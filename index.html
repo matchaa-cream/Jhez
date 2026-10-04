@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jhezel</title>
+<link rel="stylesheet" href="mae.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="orb one"></div>
+<div class="orb two"></div>
+<div class="orb three"></div>
+
+
+<section id="passwordScreen" class="screen active">
+
+    <div class="password-card">
+
+        <img
+            class="stitch"
+            src="516b3a799a0a4d0100df1cd6989e6e66.png"
+            alt="Stitch"
+        >
+
+        <div class="kicker"></div>
+        <h1>Secret Message</h1>
+        <div class="for">FOR JHEZEL</div>
+
+        <input
+            id="passwordInput"
+            class="password-input"
+            type="password"
+            maxlength="8"
+            placeholder="PASSWORD"
+        >
+
+        <button class="button" onclick="unlock()">UNLOCK LETTER</button>
+
+        <div id="error" class="error"></div>
+
+    </div>
+
+</section>
+
+
+<section id="app" class="screen">
+
+    <header class="app-header">
+        <div class="brand">For Jhezel</div>
+
+        <nav class="nav">
+            <button class="active" onclick="showPanel('home',this)">HOME</button>
+            <button onclick="showPanel('countdown',this)">TIMER</button>
+            <button onclick="showPanel('cake',this)">CAKE</button>
+            <button onclick="showPanel('gift',this)">GIFT</button>
+            <button onclick="showPanel('letter',this)">LETTER</button>
+            <button onclick="showPanel('memories',this)">PHOTOS</button>
+            <button onclick="showPanel('final',this)">FINAL</button>
+        </nav>
+    </header>
+
+    <main class="content">
+
+
+        <div id="home" class="panel active">
+
+            <div class="home-grid">
+
+                <div class="intro">
+
+                    <img
+                        class="stitch-small"
+                        src="516b3a799a0a4d0100df1cd6989e6e66.png"
+                        alt="Stitch"
+                    >
+
+                    <div class="kicker">A little surprise made for</div>
+                    <h2>Jhezel</h2>
+
+                </div>
+
+                <div class="home-card">
+                    <div class="kicker">November 4, 2026</div>
+                    <h3>Your Birthday</h3>
+                    <p>Countdown, cake, gift, letter and memories.</p>
+                    <button class="button" onclick="showPanel('letter',document.querySelectorAll('.nav button')[4])">
+                        OPEN YOUR LETTER
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="countdown" class="panel">
+
+            <div class="countdown-panel">
+
+                <div class="kicker">November 4, 2026</div>
+                <h2 class="panel-title">Birthday Countdown</h2>
+
+                <p class="panel-description">
+                    The timer counts down to your special day.
+                </p>
+
+                <div class="countdown">
+
+                    <div class="time-box">
+                        <div id="days" class="number">00</div>
+                        <div class="label">Days</div>
+                    </div>
+
+                    <div class="time-box">
+                        <div id="hours" class="number">00</div>
+                        <div class="label">Hours</div>
+                    </div>
+
+                    <div class="time-box">
+                        <div id="minutes" class="number">00</div>
+                        <div class="label">Minutes</div>
+                    </div>
+
+                    <div class="time-box">
+                        <div id="seconds" class="number">00</div>
+                        <div class="label">Seconds</div>
+                    </div>
+
+                </div>
+
+                <div class="date">YOUR SPECIAL DAY • NOVEMBER 4</div>
+
+            </div>
+
+        </div>
+
+        <div id="cake" class="panel">
+
+            <div class="cake-layout">
+
+                <div class="cake-info">
+                    <div class="kicker">Make a wish</div>
+                    <h2>Your Birthday Cake</h2>
+                    <p>
+                        The candle is waiting for you. Click the button
+                        to blow it out and start a small celebration.
+                    </p>
+                    <br>
+                    <button class="button" onclick="blowCandle()">BLOW THE CANDLE</button>
+                </div>
+
+                <div class="cake-stage">
+
+                    <div class="cake">
+
+                        <div id="flame" class="flame"></div>
+                        <div class="candle"></div>
+
+                        <div class="layer top"></div>
+                        <div class="layer middle"></div>
+                        <div class="layer bottom"></div>
+
+                        <div class="cake-name">Jhezel</div>
+                        <div class="plate"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- GIFT -->
+
+        <div id="gift" class="panel">
+
+            <div class="gift-layout">
+
+                <div class="gift-stage">
+
+                    <div class="gift" onclick="openGift()">
+                        <div class="bow left"></div>
+                        <div class="bow right"></div>
+                        <div class="gift-lid"></div>
+                        <div class="ribbon"></div>
+                        <div class="gift-box"></div>
+                    </div>
+
+                </div>
+
+                <div class="gift-info">
+
+                    <div class="kicker">Something is waiting for you</div>
+                    <h2>Your Birthday Gift</h2>
+
+                    <p>
+                        Click the gift box to open your surprise.
+                    </p>
+
+                    <div id="giftMessage" class="gift-message">
+                        <strong>A little message for you.</strong><br><br>
+                        I hope your birthday brings you good memories,
+                        genuine laughter, peaceful moments, and people
+                        who appreciate having you around.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div id="letter" class="panel letter-panel">
+
+            <div class="kicker">A message for you</div>
+            <h2 class="panel-title">Open the Letter</h2>
+
+            <p class="panel-description">
+                Click the envelope to reveal your birthday message.
+            </p>
+
+            <div id="envelope" class="envelope" onclick="openLetter()">
+
+                <div class="envelope-back"></div>
+
+                <div class="paper">
+
+                    <h3>Dear Jhezel,</h3>
+                    <p>
+                        Happy Birthday, Jhezel! I hope your special day is filled with happiness, laughter, and unforgettable moments. 
+                       You deserve all the good things that life has to offer. I’m really grateful to have you as a friend and to share so many memories with you. 
+                       May this birthday be the beginning of another amazing year for you.
+                       <br>
+                       <br>
+                        Thank you for always being someone I can talk to and spend time with. I appreciate all the conversations, jokes, random moments, and memories we have shared together. 
+                       Even the simple moments become special because of the people we share them with. I’m thankful for every moment we have spent together, whether we were laughing, talking, or simply being ourselves.
+                       I hope our friendship continues to grow and gives us many more memories to look back on.
+                       <br>
+                       <br>
+                        As you grow another year older, I hope you continue to become the person you want to be. 
+                       Always believe in yourself and remember that you are capable of achieving your dreams. There may be difficult days, but I hope you never forget how strong and valuable you are. 
+                       Keep doing the things that make you happy and surround yourself with people who genuinely care about you. You have so much ahead of you, and I hope you enjoy every step of your journey.
+                       I hope this birthday brings you closer to the things you have been wishing for. 
+                        <br>
+                    </p>
+
+                </div>
+
+                <div class="flap"></div>
+                <div class="envelope-front"></div>
+                <div class="seal">J</div>
+
+            </div>
+
+        </div>
+
+        <div id="memories" class="panel">
+
+            <div class="photos-section">
+                <div class="kicker">Little moments worth keeping</div>
+                <h2 class="panel-title">Our Photos</h2>
+                <p class="panel-description">A small collection of memories for Jhezel.</p>
+
+                <div class="photo-grid">
+                    <div class="photo-card">
+                        <div class="photo-frame"><img src="598244723_1615720219838943_2812617593825824506_n.jpg" alt="Photo 1"></div>
+                    </div>
+                    <div class="photo-card featured">
+                        <div class="photo-frame"><img src="621226926_4317617541843083_2394181357204311081_n.jpg" alt="Photo 2"></div>
+                    </div>
+                    <div class="photo-card">
+                        <div class="photo-frame"><img src="620569404_2318827455251542_9054914274415132128_n.jpg" alt="Photo 3"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div id="final" class="panel">
+
+            <div class="final-card">
+
+                <div class="kicker">November 4</div>
+
+                <h2>Happy Birthday,<br>
+                    Jhezel!</h2>
+
+                <p>
+                    I hope your day is filled with happiness, laughter,
+                    good memories, and people who genuinely care about you.
+                </p>
+
+                <br>
+
+                <p>
+                    Thank you for being part of the memories we have made.
+                    I hope this new year brings you more experiences,
+                    friendship, and moments worth remembering.
+                </p>
+
+                <br>
+
+                <button class="button" onclick="celebrate()">CELEBRATE</button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</section>
+
+<script>
+const PASSWORD = "11042010";
+const birthday = new Date("November 4, 2026 00:00:00").getTime();
+
+function unlock(){
+    const input = document.getElementById("passwordInput");
+    const error = document.getElementById("error");
+
+    if(input.value === PASSWORD){
+        error.textContent = "";
+        document.getElementById("passwordScreen").classList.remove("active");
+        document.getElementById("app").classList.add("active");
+    }else{
+        error.textContent = "Wrong password. Try again.";
+        input.value = "";
+        input.focus();
+    }
+}
+
+document.getElementById("passwordInput").addEventListener("keydown",function(e){
+    if(e.key === "Enter") unlock();
+});
+
+function showPanel(id,button){
+    document.querySelectorAll(".panel").forEach(panel=>{
+        panel.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+
+    document.querySelectorAll(".nav button").forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    if(button) button.classList.add("active");
+
+    if(id !== "letter"){
+        document.getElementById("envelope").classList.remove("open");
+    }
+}
+
+function updateCountdown(){
+    const distance = birthday - Date.now();
+
+    if(distance <= 0){
+        ["days","hours","minutes","seconds"].forEach(id=>{
+            document.getElementById(id).textContent = "00";
+        });
+        return;
+    }
+
+    const days = Math.floor(distance / 86400000);
+    const hours = Math.floor((distance % 86400000) / 3600000);
+    const minutes = Math.floor((distance % 3600000) / 60000);
+    const seconds = Math.floor((distance % 60000) / 1000);
+
+    document.getElementById("days").textContent = String(days).padStart(2,"0");
+    document.getElementById("hours").textContent = String(hours).padStart(2,"0");
+    document.getElementById("minutes").textContent = String(minutes).padStart(2,"0");
+    document.getElementById("seconds").textContent = String(seconds).padStart(2,"0");
+}
+
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+function blowCandle(){
+    document.getElementById("flame").style.display = "none";
+    createConfetti(55);
+}
+
+function openGift(){
+    document.getElementById("giftMessage").classList.toggle("show");
+    createConfetti(25);
+}
+
+function openLetter(){
+    document.getElementById("envelope").classList.toggle("open");
+}
+
+function celebrate(){
+    createConfetti(120);
+}
+
+function createConfetti(amount){
+    const colors = [
+        "#0c6598",
+        "#198bc2",
+        "#62c5e9",
+        "#bdefff",
+        "#ffffff"
+    ];
+
+    for(let i=0;i<amount;i++){
+        const piece = document.createElement("div");
+        piece.className = "confetti";
+        piece.style.background = colors[Math.floor(Math.random()*colors.length)];
+        piece.style.left = Math.random()*100 + "vw";
+        piece.style.animationDuration = (Math.random()*2+2.5) + "s";
+        piece.style.animationDelay = Math.random() + "s";
+        document.body.appendChild(piece);
+
+        setTimeout(()=>piece.remove(),5000);
+    }
+}
+</script>
+
+</body>
+</html>
